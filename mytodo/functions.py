@@ -4,7 +4,6 @@ all of the commands that can
 be submitted by a user.
 Author: Colby Allen
 """
-import task_class as tc
 import json
 
 yesAnswers = ['yes', 'y', 'yeah', 'yep','yessir']
@@ -26,35 +25,25 @@ def addTask(myTask):
     regLists.append(myTask)
     writeJson(regTasks, reglists)
     print("Item successfully added to Regular Tasks.")
-
+"""
 def addTaskMIT(myTask):
     mitLists = openJson(mitTasks)
     mitLists.append(myTask)
     writeJson(mitTasks, mitLists)
     print("Item successfully added to Most Important Tasks.")
 
-def viewTasks()
+def viewTasks():
     mitLists = openJson(mitTasks)
     regLists = openJson(regTasks)
-    print("==========================================================")
-    print("  ====== ==== =====  = = ================================")
-    print("    ==   =  = ==     ==")
-    print("    ==   ====   ==   == ")
-    print("    ==   =  = =====  = ==          ")
-    print("")
-    print("==========================================================")
     index = 1
     if mitLists:
         for task in mitLists:
-            print("==========================================================")
             print("{}. {}".format(index, task))
             index += 1
     if regLists:
         for task in regLists:
-            print("==========================================================")
             print("{}. {}".format(index, task))
             index += 1
-    print("==========================================================")
 
 def completeTask(taskNum):
     print("Congrats on finishing task number {}.".format(taskNum))
@@ -66,12 +55,15 @@ def completeTask(taskNum):
         print("Alright, we won't delete it.")
 
 def deleteTask(taskNum):
-
+    
 def deleteAll():
-
+    
 def deleteAllMIT():
-
+    
 def deleteAllReg():
+    
+def printHelp():
     
 def needHelp():
     print('Please use "mytodo -help" for a list of commands.')  
+"""
