@@ -30,9 +30,3 @@ TODO IMPLEMENT
 
 TODO IMPLEMENT
 -d -all-reg    : (Delete All Regular) Will delete EVERY task from the Regular list.
-
-TODO IMPLEMENT
--s <task #1> <task #2> : (Swap) Will swap the order/priority of the tasks in your list.
-
-TODO IMPLEMENT
--cp <task #> <# of Priority You Wish> : (Change Priority) Will assign the task to be at a higher priority level
