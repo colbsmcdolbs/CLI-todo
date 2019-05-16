@@ -7,13 +7,10 @@ TODO WRITE
 # Usage:
 mytodo will begin before all arguments.
 
-TODO IMPLEMENT
 -v : (View) Will print to the console all current tasks you have and their assigned numbers.
 
-TODO IMPLEMENT
 -a  <"My task">: (Add) Will add a task to your task list [be sure that you put your task in quotations].
 
-TODO IMPLEMENT
 -a -mit <"My task">: (Add MIT) Will add a task to your MIT (Most Important Take) list [Task in Quotations].
 
 TODO IMPLEMENT

@@ -1,34 +1,41 @@
-import sys
+from sys import argv
 import functions
 
 def main():
-    args = sys.argv[1:]
-    if len(args) < 1 or len(args) > 3:
+    
+    if len(argv) < 1 or len(argv) > 4:
         print('The incorrect number of arguments has been used.')
-        functions.needHelp()
+        functions.printHelp()
     
     # Displays the help screen
-    if args[1] is "-help":
+    if argv[1] == "-help":
         functions.printHelp()
 
     # Displays list of all tasks.
-    elif args[1] is "-v":
+    elif argv[1] == "-v":
         functions.viewTasks()
 
-    # Adds the task to Regular Tasks
-    elif args[1] is "-a":
-        if args[2]:
-            functions.addTask(args[2])
-            print('Your Task: {}'.format(args[2]))
-            print('Has been added to your tasks.')
-        else:
+    # Adds the task to a task list
+    elif argv[1] == "-a":
+        try:
+            if argv[2] == "-mit":
+                try:
+                    functions.addTaskMIT(argv[3])
+                    print('Your Task: {}'.format(argv[3]))
+                    print('Has been added to your Most Important Tasks.')
+                except IndexError:
+                    print('Error, Incorrect Usage.')
+                    functions.printHelp()
+            else: 
+                functions.addTask(argv[2])
+                print('Your Task: {}'.format(argv[2]))
+                print('Has been added to your tasks.')
+        except IndexError:
             print('Error, Incorrect Usage.')
-            functions.needHelp()
+            functions.printHelp()
     else:
         print('Error, idiot')
 """
-    # Adds the task to MIT
-    elif 
 
     # Completes the task and Asks user if they want to remove it
     elif args[1] is "-d":
