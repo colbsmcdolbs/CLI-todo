@@ -33,6 +33,17 @@ def main():
         except IndexError:
             print('Error, Incorrect Usage.')
             functions.printHelp()
+    # Handles the deleting function
+    elif argv[1] == "-d":
+        if argv[2] == "-all":
+            functions.deleteAll()
+        elif argv[2] == "-mit":
+            functions.deleteAllMIT()
+        elif argv[2] == "-reg":
+            functions.deleteAllReg()
+        else:
+            print('Error, Incorrect Usage.')
+
     else:
         print('Error, idiot')
 """

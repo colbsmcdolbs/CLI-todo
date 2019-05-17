@@ -23,7 +23,7 @@ TODO IMPLEMENT
 -d -all       : (Delete All) Will delete EVERY task from all lists.
 
 TODO IMPLEMENT
--d -all-mit   : (Delete All MIT) Will delete EVERY task from the MIT list.
+-d -mit   : (Delete All MIT) Will delete EVERY task from the MIT list.
 
 TODO IMPLEMENT
--d -all-reg    : (Delete All Regular) Will delete EVERY task from the Regular list.
+-d -reg    : (Delete All Regular) Will delete EVERY task from the Regular list.

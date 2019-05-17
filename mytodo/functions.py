@@ -6,7 +6,7 @@ Author: Colby Allen
 """
 import json
 
-yesAnswers = ['yes', 'y', 'yeah', 'yep','yessir']
+yesAnswers = ['yes', 'y', 'yeah', 'yep','yessir', 'yeah', 'ya', 'yamon', 'yea']
 
 def openJson(file):
     with open(file, 'r') as json_file:
@@ -48,9 +48,47 @@ def viewTasks():
             index += 1
     print('============================')
 
-def findTask(taskNum):
+def deleteAllMIT():
+    mitLists = openJson('mitTasks.json')
+    if mitLists:
+        response = input('Do you really wish to delete all of your Most Important Tasks? [Y/n]')
+        if response.lower() in yesAnswers:
+            mitLists = []
+            writeJson('mitTasks.json', mitLists)
+            print('Your Most Import Task list has been cleared.')
+        else:
+            print('Alright, we won\'t erase that list.')
+    else:
+        print('It appears your Most Important Task list is already empty...')
+        print('Nothing to do here.')
         
+
+def deleteAllReg():
+    regLists = openJson('regTasks.json')
+    if regLists:
+        response = input('Do you really wish to delete all of your Regular Tasks? [Y/n]')
+        if response.lower() in yesAnswers:
+            regLists = []
+            writeJson('regTasks.json', regLists)
+            print('Your Regular Task list has been cleared.')
+        else:
+            print('Alright, we won\'t erase that list.')
+    else:
+        print('It appears your Regular Task list is already empty...')
+        print('Nothing to do here.')
+
+def deleteAll():
+    deleteAllMIT()
+    deleteAllReg()
+
+
+
+
+
 """
+def findTask(taskNum):
+
+
 def completeTask(taskNum):
     print("Congrats on finishing task number {}.".format(taskNum))
     input = raw_input("Would you now like to delete task number {}? [Y/N]".format(taskNum))
