@@ -1,10 +1,21 @@
-# CLI-todo
+# mytodo
 
-# INSTALLATION:
-TODO WRITE
+This CLI Application was built using Python and after installation will allow you to add, remove, delete, complete and view
+your To-Do list in an extremely simple way. 
 
+## Getting Started
 
-# Usage:
+### Prerequisites
+
+You must have Python 3 and the Python module "pip" installed on your machine before setting up.
+
+### Installing
+
+To install this CLI onto your machine, download the zip of this repository and navigate into this directory in the terminal.
+Then you must run the shell script with administrative privliges.
+EX: sudo ./install.sh
+
+## Usage:
 mytodo will begin before all arguments.
 
 -v : (View) Will print to the console all current tasks you have and their assigned numbers.
@@ -22,3 +33,11 @@ mytodo will begin before all arguments.
 -d -mit   : (Delete All MIT) Will delete EVERY task from the MIT list.
 
 -d -reg    : (Delete All Regular) Will delete EVERY task from the Regular list.
+
+## Built With
+
+* [Python](https://github.com/python/cpython) - The programming language used
+
+## Authors
+
+* **Colby Allen**

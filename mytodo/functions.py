@@ -5,8 +5,10 @@ be submitted by a user.
 Author: Colby Allen
 """
 import json
+from pathlib import Path
 
 yesAnswers = ['yes', 'y', 'yeah', 'yep','yessir', 'yeah', 'ya', 'yamon', 'yea']
+path = Path(__file__).parent.absolute()
 
 def openJson(file):
     with open(file, 'r') as json_file:
@@ -17,22 +19,22 @@ def writeJson(file, data):
         json.dump(data, json_file)
 
 def addTask(myTask):
-    regLists = openJson('regTasks.json')
+    regLists = openJson(str(path) + '/regTasks.json')
     regLists.append(myTask)
-    writeJson('regTasks.json', regLists)
+    writeJson(str(path) + '/regTasks.json', regLists)
     print('Your Task: {}'.format(myTask))
     print('Has been added to your tasks.')
 
 def addTaskMIT(myTask):
-    mitLists = openJson('mitTasks.json')
+    mitLists = openJson(str(path) + '/mitTasks.json')
     mitLists.append(myTask)
-    writeJson('mitTasks.json', mitLists)
+    writeJson(str(path) + '/mitTasks.json', mitLists)
     print('Your Task: {}'.format(myTask))
     print('Has been added to your Most Important Tasks.')
 
 def viewTasks():
-    mitLists = openJson('mitTasks.json')
-    regLists = openJson('regTasks.json')
+    mitLists = openJson(str(path) + '/mitTasks.json')
+    regLists = openJson(str(path) + '/regTasks.json')
     index = 1
     print('============================')
     if mitLists:
@@ -49,12 +51,12 @@ def viewTasks():
     print('============================')
 
 def deleteAllMIT():
-    mitLists = openJson('mitTasks.json')
+    mitLists = openJson(str(path) + '/mitTasks.json')
     if mitLists:
         response = input('Do you really wish to delete all of your Most Important Tasks? [Y/n]')
         if response.lower() in yesAnswers:
             mitLists = []
-            writeJson('mitTasks.json', mitLists)
+            writeJson(str(path) + '/mitTasks.json', mitLists)
             print('Your Most Import Task list has been cleared.')
         else:
             print('Alright, we won\'t erase that list.')
@@ -64,12 +66,12 @@ def deleteAllMIT():
         
 
 def deleteAllReg():
-    regLists = openJson('regTasks.json')
+    regLists = openJson(str(path) + '/regTasks.json')
     if regLists:
         response = input('Do you really wish to delete all of your Regular Tasks? [Y/n]')
         if response.lower() in yesAnswers:
             regLists = []
-            writeJson('regTasks.json', regLists)
+            writeJson(str(path) + '/regTasks.json', regLists)
             print('Your Regular Task list has been cleared.')
         else:
             print('Alright, we won\'t erase that list.')
@@ -99,15 +101,15 @@ def deleteTask(taskNum):
         response = input('Do you really wish to remove task number {}? [Y/n]'.format(taskNum))
         response = response.lower()
         if response in yesAnswers:
-            mitLists = openJson('mitTasks.json')
-            regLists = openJson('regTasks.json')
+            mitLists = openJson(str(path) + '/mitTasks.json')
+            regLists = openJson(str(path) + '/regTasks.json')
             index = 1
             isDeleted = False
             for idx, task in enumerate(mitLists):
                 if taskNum == index:
                     deleted = task
                     mitLists.pop(idx)
-                    writeJson('mitTasks.json', mitLists)
+                    writeJson(str(path) + '/mitTasks.json', mitLists)
                     isDeleted = True
                     break
                 index += 1
@@ -116,7 +118,7 @@ def deleteTask(taskNum):
                     if taskNum == index:
                         deleted = task
                         regLists.pop(idx)
-                        writeJson('regTasks.json', regLists)
+                        writeJson(str(path) + '/regTasks.json', regLists)
                         break
                     index += 1
             print('Your task "{}" has been deleted.'.format(deleted))
@@ -126,8 +128,8 @@ def deleteTask(taskNum):
         print('Invalid usage. Retry after verifying your task number.')
 
 def checkValidTaskNum(taskNum):
-    mitLists = openJson('mitTasks.json')
-    regLists = openJson('regTasks.json')
+    mitLists = openJson(str(path) + '/mitTasks.json')
+    regLists = openJson(str(path) + '/regTasks.json')
     numTasks = len(mitLists) + len(regLists)
     if mitLists or regLists:
         if 1 <= taskNum <= numTasks:
