@@ -16,19 +16,19 @@ def writeJson(file, data):
     with open(file, 'w') as json_file:
         json.dump(data, json_file)
 
-#TODO CREATE THE HELP
-def printHelp():
-    helpMessage = ""
-
 def addTask(myTask):
     regLists = openJson('regTasks.json')
     regLists.append(myTask)
     writeJson('regTasks.json', regLists)
+    print('Your Task: {}'.format(myTask))
+    print('Has been added to your tasks.')
 
 def addTaskMIT(myTask):
     mitLists = openJson('mitTasks.json')
     mitLists.append(myTask)
     writeJson('mitTasks.json', mitLists)
+    print('Your Task: {}'.format(myTask))
+    print('Has been added to your Most Important Tasks.')
 
 def viewTasks():
     mitLists = openJson('mitTasks.json')
@@ -81,29 +81,76 @@ def deleteAll():
     deleteAllMIT()
     deleteAllReg()
 
-
-
-
-
-"""
-def findTask(taskNum):
-
-
 def completeTask(taskNum):
-    print("Congrats on finishing task number {}.".format(taskNum))
-    input = raw_input("Would you now like to delete task number {}? [Y/N]".format(taskNum))
-    input.lower()
-    if input in yesAnswers:
-        deleteTask(taskNum)
+    if checkValidTaskNum(taskNum):
+        print("Congrats on finishing task number {}.".format(taskNum))
+        response = input("Would you now like to delete task number {}? [Y/N]".format(taskNum))
+        response = response.lower()
+        if response in yesAnswers:
+            deleteTask(taskNum)
+        else:
+            print("Alright, we won't delete it.")
     else:
-        print("Alright, we won't delete it.")
+        print('Invalid usage. Retry after verifying your task number.')
+
 
 def deleteTask(taskNum):
-    
-def deleteAll():
-    
-def deleteAllMIT():
-    
-def deleteAllReg():
-    
-"""
+    if checkValidTaskNum(taskNum):
+        response = input('Do you really wish to remove task number {}? [Y/n]'.format(taskNum))
+        response = response.lower()
+        if response in yesAnswers:
+            mitLists = openJson('mitTasks.json')
+            regLists = openJson('regTasks.json')
+            index = 1
+            isDeleted = False
+            for idx, task in enumerate(mitLists):
+                if taskNum == index:
+                    deleted = task
+                    mitLists.pop(idx)
+                    writeJson('mitTasks.json', mitLists)
+                    isDeleted = True
+                    break
+                index += 1
+            if not isDeleted:
+                for idx, task in enumerate(regLists):
+                    if taskNum == index:
+                        deleted = task
+                        regLists.pop(idx)
+                        writeJson('regTasks.json', regLists)
+                        break
+                    index += 1
+            print('Your task "{}" has been deleted.'.format(deleted))
+        else:
+            print('Alright, we won\'t delete that for you.')
+    else:
+        print('Invalid usage. Retry after verifying your task number.')
+
+def checkValidTaskNum(taskNum):
+    mitLists = openJson('mitTasks.json')
+    regLists = openJson('regTasks.json')
+    numTasks = len(mitLists) + len(regLists)
+    if mitLists or regLists:
+        if 1 <= taskNum <= numTasks:
+            return True
+        else:
+            return False
+    else:
+        return False
+
+def printHelp():
+    helpMessage = "Instructions on how to use mytodo:\n"
+    helpMessage += "To Add a Task to Regular List:\n"
+    helpMessage += "Command: mytodo -a <'Your task in quotes'>\n\n"
+    helpMessage += "To Add a Task to Your Most Important Task List:\n"
+    helpMessage += "Command: mytodo -a -mit <'Your task in quotes'>\n\n"
+    helpMessage += "To View All of Your Current Tasks:\n"
+    helpMessage += "Command: mytodo -v\n\n"
+    helpMessage += "To Complete a Task(Find Task Number by Using the View Command):\n"
+    helpMessage += "Command: mytodo -c <Your Task Number as an Integer>"
+    helpMessage += "To Delete a Specific Task (Find Task Number by Using the View Command):\n"
+    helpMessage += "Command: mytodo -d <Your Task Number as an integer>\n\n"
+    helpMessage += "To Delete All Tasks From Both Lists:\n"
+    helpMessage += "Command mytodo -d -all\n\n"
+    helpMessage += "To Delete All From Certain List(-mit for Most Important or -reg for Regular):\n"
+    helpMessage += "Command mytodo -d <-mit or -reg>"
+    print(helpMessage)

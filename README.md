@@ -13,17 +13,12 @@ mytodo will begin before all arguments.
 
 -a -mit <"My task">: (Add MIT) Will add a task to your MIT (Most Important Take) list [Task in Quotations].
 
-TODO IMPLEMENT
 -c <task #> : (Complete) Will set a task marked for completion.
 
-TODO IMPLEMENT
 -d <task #>   : (Delete) Will delete a task and reorder the list.
 
-TODO IMPLEMENT
 -d -all       : (Delete All) Will delete EVERY task from all lists.
 
-TODO IMPLEMENT
 -d -mit   : (Delete All MIT) Will delete EVERY task from the MIT list.
 
-TODO IMPLEMENT
 -d -reg    : (Delete All Regular) Will delete EVERY task from the Regular list.
