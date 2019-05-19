@@ -1,6 +1,5 @@
 from sys import argv
-import functions
-import numbers
+from mytodo import functions
 
 def main():
     
